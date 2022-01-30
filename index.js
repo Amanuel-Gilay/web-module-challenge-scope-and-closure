@@ -62,9 +62,11 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+  return Math.floor(Math.random()*Math.floor(2))
+    
 }
+console.log(inning);
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -81,18 +83,38 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inning, int){
+  const gameScore = [];
+  let homScore = 0;
+  let awayScore = 0;
+  for(let i = 0; i < int; i++){
+    homScore = homScore + inning();
+    awayScore = awayScore + inning();
+    gameScore.push();
+  }
+  return {
+    'home': homScore,
+    'away': awayScore
+  }
 }
+console.log(finalScore(inning,9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inning) {
+  let homScore = 0;
+  let awayScore = 0;
+  homScore = homScore + inning();
+  awayScore = awayScore + inning();
+  return {
+    'home': homScore,
+    'away': awayScore
+  }
 }
+console.log(getInningScore(inning));
 
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -136,9 +158,22 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, inning, score) {
+  const totalScore = [];
+  let homScore = 0;
+  let awayScore = 0;
+  for(let i = 0; i < score; i++){
+    const currentScore = inning();
+    homScore = homScore + inning();
+    awayScore = awayScore + inning();
+    totalScore.push(currentScore);
+  }
+  return {
+    'home': homScore,
+    'away': awayScore
+  }
 }
+console.log(scoreboard(getInningScore, inning));
 
 
 
